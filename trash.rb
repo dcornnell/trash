@@ -31,8 +31,8 @@ class House
  	trash = Trash.new
  end
 
- def takeout_trash
- 	if @full == true
+ def takeout_trash(trash)
+ 	if trash == true
  		@trash_location = "curb"
  		puts "the trash is on the curb"
  	else
@@ -69,10 +69,13 @@ describe House do
 
 	it 'should move to the curb if it is full' do 
 		trash.put_trash
-		trash.full?
-		house.takeout_trash
+		istrashfull = trash.full?
+		house.takeout_trash(istrashfull)
 		house.trash_location.should_not eq("kitchen")
 	end
 end
+
+
+
 
 
